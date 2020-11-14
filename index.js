@@ -39,7 +39,7 @@ async function gotCMD(msg, cmd, args) {
         user.username = "themselves";
       }
 
-      let url = await getGIF();
+      let url = await getGIF("anime+hug");
       const hugEmbed = new Discord.MessageEmbed()
         .setColor("#0099ff")
         .setTitle(`${msg.author.username} hugged ${user.username}`)
@@ -47,13 +47,19 @@ async function gotCMD(msg, cmd, args) {
       msg.channel.send(hugEmbed);
       break;
 
-    default:
-      msg.reply("Unfortunately It's an Unknown Command.")
+    case "gif":
+      if (args[0]) {
+        let url = await getGIF(`${args[0]}`);
+        msg.channel.send(`GIF from Tenor: ${args[0]}`);
+        msg.channel.send(url);
+      } else {
+        msg.reply("Please put a search term, thank you.");
+      }
   }
 }
 
-async function getGIF() {
-  let res = await fetch(`https://api.tenor.com/v1/random?q=anime+hug&key=${process.env.TENOR_KEY}&limit=1`)
+async function getGIF(tag) {
+  let res = await fetch(`https://api.tenor.com/v1/random?q=${tag}&key=${process.env.TENOR_KEY}&limit=1`)
   let data = await res.json();
   return data["results"][0]["media"][0]["gif"]["url"];
 }
