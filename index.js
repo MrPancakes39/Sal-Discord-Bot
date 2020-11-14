@@ -10,7 +10,7 @@ client.on("ready", () => console.log("I'm Ready! >.<"));
 client.on("message", (msg) => {
   // make evrything lower case and check if it starts with sal.
   let content = msg.content.toLowerCase();
-  if (!(/^sal/g.test(content))) return;
+  if (!(/^sal$/g.test(content) || /^sal /g.test(content))) return;
 
   // parses the content.
   const withoutPrefix = content.slice(4);
