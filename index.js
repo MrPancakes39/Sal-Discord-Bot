@@ -53,10 +53,8 @@ async function gotCMD(msg, cmd, args) {
 }
 
 async function getGIF() {
-  // let res = await fetch(`http://api.giphy.com/v1/gifs/random?tag=anime+hug&api_key={process.env.GIPHY_KEY}&rating=g`);
   let res = await fetch(`https://api.tenor.com/v1/random?q=anime+hug&key=${process.env.TENOR_KEY}&limit=1`)
   let data = await res.json();
-  // return data["data"]["image_original_url"];
   return data["results"][0]["media"][0]["gif"]["url"];
 }
 
