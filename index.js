@@ -41,7 +41,7 @@ async function gotCMD(msg, cmd, args) {
 
       let url = await getGIF("anime+hug");
       const hugEmbed = new Discord.MessageEmbed()
-        .setColor("#0099ff")
+        .setColor("#f89e4f")
         .setTitle(`${msg.author.username} hugged ${user.username}`)
         .setImage(url);
       msg.channel.send(hugEmbed);
@@ -61,7 +61,7 @@ async function gotCMD(msg, cmd, args) {
       let str = `🏓 Latency is ${Date.now() - msg.createdTimestamp}ms.\nAPI Latency is ${Math.round(client.ws.ping)}ms.`;
       msg.channel.send("Pong!");
       const pingEmbed = new Discord.MessageEmbed()
-        .setColor("#0099ff")
+        .setColor("#f89e4f")
         .setTitle(`Ping Results:`)
         .setDescription(str);
       msg.channel.send(pingEmbed);
