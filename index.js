@@ -13,9 +13,9 @@ client.on("message", (msg) => {
   if (!(/^sal$/g.test(content) || /^sal /g.test(content))) return;
 
   // parses the content.
-  const withoutPrefix = content.slice(4);
+  const withoutPrefix = msg.content.slice(4);
   const split = withoutPrefix.split(/ +/);
-  const cmd = split[0];
+  const cmd = split[0].toLowerCase();
   const args = split.slice(1);
 
   gotCMD(msg, cmd, args);
@@ -55,6 +55,7 @@ async function gotCMD(msg, cmd, args) {
       } else {
         msg.reply("Please put a search term, thank you.");
       }
+      break;
   }
 }
 
