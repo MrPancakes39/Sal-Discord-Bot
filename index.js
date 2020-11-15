@@ -56,6 +56,16 @@ async function gotCMD(msg, cmd, args) {
         msg.reply("Please put a search term, thank you.");
       }
       break;
+
+    case "ping":
+      let str = `🏓 Latency is ${Date.now() - msg.createdTimestamp}ms.\nAPI Latency is ${Math.round(client.ws.ping)}ms.`;
+      msg.channel.send("Pong!");
+      const pingEmbed = new Discord.MessageEmbed()
+        .setColor("#0099ff")
+        .setTitle(`Ping Results:`)
+        .setDescription(str);
+      msg.channel.send(pingEmbed);
+      break;
   }
 }
 
