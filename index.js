@@ -117,6 +117,4 @@ function tictactoe(msg) {
     .setDescription(str)
     .addField("Enter The Letter to Put X or O in That Spot.", `Player: ${msg.author}`);
   msg.channel.send(gameEmbed);
-  //mention.slice(1); Some code got deleted.
-  //return client.users.cache.get(mention);
 }
