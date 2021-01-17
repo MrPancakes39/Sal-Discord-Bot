@@ -116,5 +116,21 @@ function tictactoe(msg) {
     .setTitle(`TicTacToe:`)
     .setDescription(str)
     .addField("Enter The Letter to Put X or O in That Spot.", `Player: ${msg.author}`);
-  msg.channel.send(gameEmbed);
+  msg.channel.send(gameEmbed).then(async sentEmbed => {
+    try {
+      await sentEmbed.react("🇦");
+      await sentEmbed.react("🇧");
+      await sentEmbed.react("🇨");
+
+      await sentEmbed.react("🇩");
+      await sentEmbed.react("🇪");
+      await sentEmbed.react("🇫");
+
+      await sentEmbed.react("🇬");
+      await sentEmbed.react("🇭");
+      await sentEmbed.react("🇮");
+    } catch (error) {
+      console.error("One of the emojis failed to react.");
+    }
+  })
 }
