@@ -6,7 +6,13 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 client.login(`${process.env.BOT_TOKEN}`);
 
-client.on("ready", () => console.log("I'm Ready! >.<"));
+client.on("ready", () => {
+  console.log("I'm Ready! >.<");
+  client.user.setStatus("idle");
+  client.user.setActivity("sal help", {
+    type: "LISTENING"
+  });
+});
 client.on("message", (msg) => {
   // make evrything lower case and check if it starts with sal.
   let content = msg.content.toLowerCase();
@@ -68,20 +74,24 @@ async function gotCMD(msg, cmd, args) {
       break;
 
     case "help":
+      let descrption =
+        "To use a command type: `sal <command name>` for example: `sal help`\n" +
+        "You can also mention me to get help message.\n\u200B";
       const helpEmbed = new Discord.MessageEmbed()
         .setColor("#f89e4f")
-        .setTitle(`Sal-kun Bot's Commands:`)
+        .setAuthor(`Sal-kun Bot's Commands:`, `https://i.imgur.com/rzvO3bA.png`)
+        .setDescription(descrption)
         .addFields({
-          name: "help",
+          name: ":tools: help",
           value: "Shows help message"
         }, {
-          name: "hug",
+          name: ":hugging: hug",
           value: "`hug` to hug yourself\n`hug <username>` to hug a user"
         }, {
-          name: "gif",
+          name: ":stuck_out_tongue_closed_eyes: gif",
           value: "`gif term` to give you a GIF"
         }, {
-          name: "ping",
+          name: ":ping_pong: ping",
           value: "Shows ping results"
         })
       msg.channel.send(helpEmbed);
