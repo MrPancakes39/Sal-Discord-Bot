@@ -66,6 +66,26 @@ async function gotCMD(msg, cmd, args) {
         .setDescription(str);
       msg.channel.send(pingEmbed);
       break;
+
+    case "help":
+      const helpEmbed = new Discord.MessageEmbed()
+        .setColor("#f89e4f")
+        .setTitle(`Sal-kun Bot's Commands:`)
+        .addFields({
+          name: "help",
+          value: "Shows help message"
+        }, {
+          name: "hug",
+          value: "`hug` to hug yourself\n`hug <username>` to hug a user"
+        }, {
+          name: "gif",
+          value: "`gif term` to give you a GIF"
+        }, {
+          name: "ping",
+          value: "Shows ping results"
+        })
+      msg.channel.send(helpEmbed);
+      break;
   }
 }
 
