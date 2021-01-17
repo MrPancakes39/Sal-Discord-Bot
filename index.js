@@ -66,6 +66,10 @@ async function gotCMD(msg, cmd, args) {
         .setDescription(str);
       msg.channel.send(pingEmbed);
       break;
+
+    case "play":
+      playfxn(msg, args);
+      break;
   }
 }
 
@@ -87,4 +91,32 @@ function getUserFromMention(mention) {
 
     return client.users.cache.get(mention);
   }
+}
+
+function playfxn(msg, args) {
+  switch (args[0]) {
+    case "tictactoe":
+      tictactoe(msg);
+      break;
+  }
+}
+
+function tictactoe(msg) {
+  let grid = [
+    ":regional_indicator_a:", ":regional_indicator_b:", ":regional_indicator_c:",
+    ":regional_indicator_d:", ":regional_indicator_e:", ":regional_indicator_f:",
+    ":regional_indicator_g:", ":regional_indicator_h:", ":regional_indicator_i:"
+  ];
+  let str = "";
+  for (let i = 0; i < grid.length; i++) {
+    (i % 3 == 2) ? (str += grid[i] + "\n") : (str += grid[i]);
+  }
+  const gameEmbed = new Discord.MessageEmbed()
+    .setColor("#f89e4f")
+    .setTitle(`TicTacToe:`)
+    .setDescription(str)
+    .addField("Enter The Letter to Put X or O in That Spot.", `Player: ${msg.author}`);
+  msg.channel.send(gameEmbed);
+  //mention.slice(1); Some code got deleted.
+  //return client.users.cache.get(mention);
 }
