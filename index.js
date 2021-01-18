@@ -121,7 +121,7 @@ function roshambo(msg) {
   msg.channel.send("Choose either (r)ock, (p)aper, or (s)cissors").then(() => {
     msg.channel.awaitMessages(filter, {
         max: 1,
-        time: 10000,
+        time: 15000,
         errors: ["time"]
       })
       .then(collected => {
