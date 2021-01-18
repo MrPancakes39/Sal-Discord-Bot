@@ -108,10 +108,6 @@ function playfxn(msg, args) {
     case "roshambo":
       roshambo(msg);
       break;
-
-    case "tictactoe":
-      tictactoe(msg);
-      break;
   }
 }
 
@@ -171,94 +167,4 @@ function roshambo(msg) {
         msg.channel.send("Looks like you didn't pick anything.");
       });
   });
-}
-
-function tictactoe(msg) {
-  let grid = [
-    ":regional_indicator_a:", ":regional_indicator_b:", ":regional_indicator_c:",
-    ":regional_indicator_d:", ":regional_indicator_e:", ":regional_indicator_f:",
-    ":regional_indicator_g:", ":regional_indicator_h:", ":regional_indicator_i:"
-  ];
-  let str = gridToStr(grid);
-  let gameEmbed = new Discord.MessageEmbed()
-    .setColor("#f89e4f")
-    .setTitle(`TicTacToe:`)
-    .setDescription(str)
-    .addField("Enter The Letter to Put X or O in That Spot.", `Player: ${msg.author}`);
-  msg.channel.send(gameEmbed).then(sentEmbed => {
-    // Add reactions.
-    const emojiList = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭", "🇮"];
-    try {
-      for (let emoji of emojiList) sentEmbed.react(emoji);
-    } catch (error) {
-      console.error("One of the emojis failed to react.");
-    }
-
-    const filter = (reaction, user) => {
-      let reactions_match = emojiList.some(emoji => emoji === reaction.emoji.name);
-      let authors_match = user.id === msg.author.id;
-      return reactions_match && authors_match;
-    };
-
-    const dict = {
-      "🇦": ":regional_indicator_a:",
-      "🇧": ":regional_indicator_b:",
-      "🇨": ":regional_indicator_c:",
-      "🇩": ":regional_indicator_d:",
-      "🇪": ":regional_indicator_e:",
-      "🇫": ":regional_indicator_f:",
-      "🇬": ":regional_indicator_g:",
-      "🇭": ":regional_indicator_h:",
-      "🇮": ":regional_indicator_i:"
-    }
-
-    sentEmbed.awaitReactions(filter, {
-        max: 1,
-        time: 60000,
-        errors: ["time"]
-      })
-      .then(collected => {
-        let emoji = collected.first().emoji.name;
-        let index_of_letter = grid.indexOf(dict[emoji]);
-        grid[index_of_letter] = ":x:";
-
-        let choice = ":o:";
-        while (choice == ":x:" || choice == ":o:") {
-          choice = grid[Math.floor(Math.random() * (grid.length))];
-        }
-        index_of_letter = grid.indexOf(choice);
-        grid[index_of_letter] = ":o:";
-
-        str = gridToStr(grid);
-        gameEmbed.setDescription(str);
-        sentEmbed.edit(gameEmbed);
-      })
-      .catch(collected => {
-        msg.channel.send(`After a minute, player: ${msg.author} didn't react.`);
-      });
-  })
-}
-
-function gridToStr(grid) {
-  let str = "";
-  for (let i = 0; i < grid.length; i++) {
-    (i % 3 == 2) ? (str += grid[i] + "\n") : (str += grid[i]);
-  }
-  return str;
-}
-
-function checkWinner(grid) {
-  // Check Columns.
-  for (let i = 1; i < 8; i += 3) {
-    if (grid[i - 1] == grid[i] && grid[i + 1] == grid[i + 1]) return true;
-  }
-  // Check Rows.
-  for (let i = 3; i < 6; i++) {
-    if (grid[i - 3] == grid[i] && grid[i] == grid[i + 3]) return true;
-  }
-  // Check Diagonals.
-  if (grid[0] == grid[4] && grid[4] == grid[8]) return true;
-  if (grid[2] == grid[4] && grid[4] == grid[6]) return true;
-  // Else
-  return false;
 }
