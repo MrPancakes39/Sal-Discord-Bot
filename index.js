@@ -105,10 +105,14 @@ async function gotCMD(msg, cmd, args) {
           name: ":stuck_out_tongue_closed_eyes: gif",
           value: "`gif term` to give you a GIF"
         }, {
+          name: ":game_die: play",
+          value: "`play roshambo` to play rock, paper, scissors.\n`More Coming Soon...`"
+        }, {
           name: ":ping_pong: ping",
           value: "Shows ping results"
         })
       msg.channel.send(helpEmbed);
+      break;
 
     case "play":
       if (args.length == 0) {
