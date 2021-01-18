@@ -184,19 +184,11 @@ function tictactoe(msg) {
     .setTitle(`TicTacToe:`)
     .setDescription(str)
     .addField("Enter The Letter to Put X or O in That Spot.", `Player: ${msg.author}`);
-  msg.channel.send(gameEmbed).then(async sentEmbed => {
+  msg.channel.send(gameEmbed).then(sentEmbed => {
+    // Add reactions.
+    const reacionList = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭", "🇮"];
     try {
-      await sentEmbed.react("🇦");
-      await sentEmbed.react("🇧");
-      await sentEmbed.react("🇨");
-
-      await sentEmbed.react("🇩");
-      await sentEmbed.react("🇪");
-      await sentEmbed.react("🇫");
-
-      await sentEmbed.react("🇬");
-      await sentEmbed.react("🇭");
-      await sentEmbed.react("🇮");
+      for (let reaction of reacionList) sentEmbed.react(reaction);
     } catch (error) {
       console.error("One of the emojis failed to react.");
     }
