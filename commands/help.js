@@ -18,6 +18,12 @@ module.exports = function (msg) {
             name: ":stuck_out_tongue_closed_eyes: gif",
             value: "`gif term` to give you a GIF"
         }, {
+            name: ":cat: aww",
+            value: "Will make you go 'aww' from r/aww"
+        }, {
+            name: ":joy: memes",
+            value: "Gives you some memes from r/memes"
+        }, {
             name: ":game_die: play",
             value: "`play roshambo` to play rock, paper, scissors.\n`More Coming Soon...`"
         }, {
