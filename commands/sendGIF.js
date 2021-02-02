@@ -38,7 +38,7 @@ async function gif(msg, args) {
 }
 
 async function getGIF(tag) {
-  let res = await fetch(`https://api.tenor.com/v1/random?q=${tag}&key=${process.env.TENOR_KEY}&limit=1`)
+  let res = await fetch(`https://api.tenor.com/v1/random?q=${tag}&key=${process.env.TENOR_KEY}&limit=1`);
   let data = await res.json();
   return data["results"][0]["media"][0]["gif"]["url"];
 }
