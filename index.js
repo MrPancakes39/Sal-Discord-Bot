@@ -14,7 +14,7 @@ client.on("ready", () => {
 });
 client.on("message", (msg) => {
   // If we mention the bot alone i.e. "@Sal-kun Bot" and nothing else, we have botMention.
-  botMention = msg.content.startsWith(`<@!${client.user.id}`) && msg.content.endsWith(">");
+  botMention = (msg.content.startsWith(`<@!${client.user.id}`) || msg.content.startsWith(`<@${client.user.id}`)) && msg.content.endsWith(">");
   if (botMention) {
     let str =
       "Hey looks ike you mentioned me. Well my prefix is sal.\n\n" +
