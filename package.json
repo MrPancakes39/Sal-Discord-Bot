@@ -11,6 +11,7 @@
   "author": "Salman Hasan",
   "license": "CC BY-NC-SA 4.0",
   "dependencies": {
+    "canvas": "^2.6.1",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.1"

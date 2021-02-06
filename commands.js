@@ -3,6 +3,7 @@ const ping = require("./commands/ping.js");
 const help = require("./commands/help.js");
 const play = require("./commands/play.js");
 const fromReddit = require("./commands/fromReddit.js");
+const cry = require("./commands/cry.js");
 
 const commands = {
     hug: sendGIF,
@@ -12,6 +13,7 @@ const commands = {
     play,
     aww: fromReddit,
     memes: fromReddit,
+    cry
 }
 
 module.exports = async function (client, msg, cmd, args) {

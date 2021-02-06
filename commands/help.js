@@ -24,6 +24,9 @@ module.exports = function (msg) {
             name: ":joy: memes",
             value: "Gives you some memes from r/memes"
         }, {
+            name: ":cry: cry",
+            value: "Why you cry?"
+        }, {
             name: ":game_die: play",
             value: "`play roshambo` to play rock, paper, scissors.\n`More Coming Soon...`"
         }, {
