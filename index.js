@@ -1,5 +1,6 @@
 console.log("Beep boop! 🤖");
 const commandHandler = require("./commands");
+require("dotenv").config();
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
