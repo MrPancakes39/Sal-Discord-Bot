@@ -1,8 +1,10 @@
 const fetch = require("node-fetch");
 require("dotenv").config();
 
+let client;
 const Discord = require("discord.js");
-module.exports = function (msg, args, cmd) {
+module.exports = function (msg, args, cmd, client_in) {
+  client = client_in;
   if (cmd == "hug") hug(msg, args);
   if (cmd == "gif") gif(msg, args);
 }
