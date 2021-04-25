@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT | 3000;
 
 app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
-app.get("/", (req, res) => res.send("Sal-kun is Hosted on Heroku."))
+app.get("/", (req, res) => res.send("Sal-kun is Hosted on Repl.it"))
 
 // ================= DISCORD BOT HERE ===================
 console.log("Beep boop! 🤖");
