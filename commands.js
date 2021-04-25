@@ -1,25 +1,28 @@
-const sendGIF = require("./commands/sendGIF.js");
-const ping = require("./commands/ping.js");
-const help = require("./commands/help.js");
-const play = require("./commands/play.js");
-const fromReddit = require("./commands/fromReddit.js");
-const cry = require("./commands/cry.js");
+const requireDir = require("require-dir");
+const commands = requireDir("./commands");
 
-const commands = {
-    hug: sendGIF,
-    gif: sendGIF,
-    ping,
-    help,
-    play,
-    aww: fromReddit,
-    memes: fromReddit,
-    cry
-}
+commands["hug"] = commands["gif"] = commands["sendGIF"];
+commands["aww"] = commands["memes"] = commands["fromReddit"];
 
-module.exports = async function (client, msg, cmd, args) {
+delete commands["sendGIF"];
+delete commands["fromReddit"];
+
+commands["drama"] = (msg) => {
+    msg.channel.send("Ooh, There is some juicy drama ;)", {
+        files: ["./assets/drama.gif"]
+    })
+};
+
+module.exports = async function(client, msg, cmd, args) {
     if (cmd == "") {
         msg.channel.send("It'sa me Sal-kun");
     } else {
-        commands[cmd](msg, args, cmd, client);
+        try {
+            if (Object.keys(commands).includes(cmd)) {
+                commands[cmd](msg, args, cmd, client);
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 }
