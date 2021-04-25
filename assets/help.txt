@@ -23,3 +23,9 @@ Why you cry?
 ---
 :ping_pong: ping,
 Shows ping results
+---
+:popcorn: drama,
+Drama Alert!
+---
+:people_hugging: invite,
+Gives you invite link

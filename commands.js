@@ -3,15 +3,11 @@ const commands = requireDir("./commands");
 
 commands["hug"] = commands["gif"] = commands["sendGIF"];
 commands["aww"] = commands["memes"] = commands["fromReddit"];
+commands["ping"] = commands["drama"] = commands["invite"] = commands["shortMsg"];
 
 delete commands["sendGIF"];
 delete commands["fromReddit"];
-
-commands["drama"] = (msg) => {
-    msg.channel.send("Ooh, There is some juicy drama ;)", {
-        files: ["./assets/drama.gif"]
-    })
-};
+delete commands["shortMsg"];
 
 module.exports = async function(client, msg, cmd, args) {
     if (cmd == "") {
