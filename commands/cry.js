@@ -9,7 +9,7 @@ module.exports = async function (msg, args) {
         const canvas = Canvas.createCanvas(440, 600);
         const ctx = canvas.getContext("2d");
 
-        const background = await Canvas.loadImage(__dirname + "/../sad.jpeg");
+        const background = await Canvas.loadImage(__dirname + "/../assets/sad.jpeg");
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = "#FFFFFF";

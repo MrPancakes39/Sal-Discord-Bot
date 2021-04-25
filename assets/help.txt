@@ -1,0 +1,25 @@
+:tools: help,
+Shows help message
+---
+:hugging: hug,
+`hug` to hug yourself
+hug <username>` to hug a user
+---
+:stuck_out_tongue_closed_eyes: gif,
+`gif term` to give you a GIF
+---
+:cat: aww,
+Will make you go 'aww' from r/aww
+---
+:joy: memes,
+Gives you some memes from r/memes
+---
+:cry: cry,
+Why you cry?
+---
+:game_die: play,
+`play roshambo` to play rock, paper, scissors.
+`More Coming Soon...`
+---
+:ping_pong: ping,
+Shows ping results
